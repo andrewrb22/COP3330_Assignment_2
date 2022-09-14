@@ -9,7 +9,7 @@ public class Bank {
           int choice = 0;
           Scanner scan = new Scanner(System.in);
           Account[] bank = new Account[5];
-
+         
           // bank[0] = new Account("Andrew", 6.5, 120.0);
           // bank[1] = new Account("Tony", 10.5, 100.0);
           // bank[2] = new Account("Bruce", 7.5, 800.0);
@@ -31,6 +31,9 @@ public class Bank {
                System.out.println("6. Exit Program");
 
                System.out.println("What would you like to do?");
+               int sysId = scan.nextInt();
+               
+               
 
 
 
