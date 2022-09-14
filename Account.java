@@ -93,11 +93,10 @@ public class Account {
 
       m = 10 * (m / 12) / 100;
 
-
     } else
       rate = 0.0;
 
-    return rate =  100 * (1 + m);
+    return rate = 100 * (1 + m);
 
   }
 
