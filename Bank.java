@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 /**
@@ -5,6 +6,14 @@ import java.util.Scanner;
  */
 public class Bank {
 
+     public static void cuenta(int [] g){
+
+          for (int i = 0; i < g.length; i++) {
+               
+               Array.set(g, i, i++);
+               
+          }
+     }
      public static void main(String[] args) {
           int choice = 0;
           Scanner scan = new Scanner(System.in);
@@ -30,8 +39,20 @@ public class Bank {
                }
                System.out.println("6. Exit Program");
 
-               System.out.println("What would you like to do?");
-               int sysId = scan.nextInt();
+                choice = scan.nextInt();
+               
+               for (int i = 0; i < bank.length; i++) {
+                    System.out.println("What would you like to do?");
+                    choice = scan.nextInt();
+                    if ( bank[i] == choice && bank[i] == null) {
+                         
+                    }
+
+
+               } 
+
+            
+          //     Array.set() will work for this project, if statment when choice is equal null value, change to account name.
                
                
 
