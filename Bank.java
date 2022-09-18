@@ -48,8 +48,8 @@ public class Bank {
                          System.out.println("What's the name of the account: ");
                          String name = scan.next();
                          System.out.println("What's the interest rate? ");
-                         double rate = scan.nextDouble();
-                         bankAccounts[choice - 1] = new Account(name, rate);
+                         double interest = scan.nextDouble();
+                         bankAccounts[choice - 1] = new Account(name, interest);
 
                     }
                     // If bank account is not null - Ask user what to do wit the account
@@ -57,7 +57,7 @@ public class Bank {
 
                          System.out.println("Choose from the following options: ");
                          System.out.println(
-                                   "1. Deposit Funds \n 2. Withdraw Funds  \n3. Check Balance \n4. Calculate Interest \n5. Close Account");
+                                   "1. Deposit Funds \n2. Withdraw Funds  \n3. Check Balance \n4. Calculate Interest \n5. Close Account");
                          System.out.println("What would you like to do?");
                          int option = scan.nextInt();
 
@@ -68,29 +68,58 @@ public class Bank {
                               double amount = scan.nextDouble();
                               // Check if amount is valid or not
                               if (bankAccounts[choice - 1].deposit(amount)) {
-                                   System.out.printf("You have added $%.2\n", amount);
+                                   System.out.printf("You have added $%.2f\n", amount);
                               } else
                                    System.out.println("Invalid amount!");
                          }
 
                          /*********** Option 2 withdraw money from account **********/
 
-                         if (option == 2) {
+                         else if (option == 2) {
                               System.out.println("How much money would you like to withdraw from this account? ");
                               double amount = scan.nextDouble();
 
                               // check if amount is valid to make a withdraw
 
                               if (bankAccounts[choice - 1].withdraw(amount)) {
-                                   System.out.printf("You have withdrawn $.2f\n", amount);
-                              } else
+                                   System.out.printf("You have withdrawn $%.2f\n", amount);
+                              } else {
                                    System.out.println("Invalid amount!");
+                              }
+
                          }
+
+                         /************ Option 3 - Account Balance *************/
+
+                         else if (option == 3) {
+                              System.out.println("Your Balance: " + bankAccounts[choice - 1].getBalance());
+                         }
+                         /************ Option 4 - Calculate interest rate *************/
+                         else if (option == 4) {
+                              System.out.println("How many months have past? ");
+                              int months = scan.nextInt();
+                              bankAccounts[choice - 1].applyRate(months);
+                              System.out.println("Rate apply to account");
+
+                         }
+                         /************ Option 5 - Closed account *************/
+                         else if (option == 5) {
+                              bankAccounts[choice - 1] = null;
+                              System.out.println("Bank account closed.");
+                         }
+                          /************Invalid option*************/
+                         else {
+                              System.out.println("Invalid option!");
+                         }
+
                     }
 
                }
 
           }
+           /************Choice 6 - Exit Program*************/
+          System.out.println("GoodBye!");
+          scan.close();
 
      }
 }

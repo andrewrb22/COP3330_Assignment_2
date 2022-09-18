@@ -8,16 +8,16 @@ public class Account {
    * Variables
    *********************************/
   private String name;
-  private double rate;
+  double rate;
   private double balance;
 
   /******************************
    * Constructure
    *********************************/
-  public Account(String name, double rate) {
+  public Account(String name, double interest) {
 
     this.name = name;
-    this.rate = rate;
+    this.rate = interest;
 
   }
 
@@ -69,7 +69,7 @@ public class Account {
 
   //Calculate rate method
 
-  public void applyRate(int m) {
+  public void applyRate(double m) {
 
     //Math for calculation
     double period = rate * (m/12) / 100;
