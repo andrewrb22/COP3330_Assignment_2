@@ -1,5 +1,8 @@
-/**
- * Account
+/*
+ * Andrew Rodriguez
+ * Assignment_2 - Objects
+ * September 18, 2022
+ * COP3330
  */
 
 public class Account {
@@ -54,29 +57,27 @@ public class Account {
     return true;
   }
 
-  //Balance method
+  // Balance method
   public double getBalance() {
 
     return this.balance;
   }
 
-  //Account Method
+  // Account Method
   public String getName() {
 
     return this.name;
   }
 
-
-  //Calculate rate method
+  // Calculate rate method
 
   public void applyRate(double m) {
 
-    //Math for calculation
-    double period = rate * (m/12) / 100;
+    // Math for calculation
+    double period = rate * (m / 12) / 100;
 
-    //New Value
+    // New Value
     balance = balance * (1 + period);
-
 
   }
 

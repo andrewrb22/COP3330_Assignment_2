@@ -1,8 +1,11 @@
 
-/**
- * bankAccounts
+/*
+ * Andrew Rodriguez
+ * Assignment_2 - Objects
+ * September 18, 2022
+ * COP3330
  */
-import java.lang.reflect.Array;
+
 import java.util.Scanner;
 
 public class Bank {
@@ -107,7 +110,7 @@ public class Bank {
                               bankAccounts[choice - 1] = null;
                               System.out.println("Bank account closed.");
                          }
-                          /************Invalid option*************/
+                         /************ Invalid option *************/
                          else {
                               System.out.println("Invalid option!");
                          }
@@ -117,7 +120,7 @@ public class Bank {
                }
 
           }
-           /************Choice 6 - Exit Program*************/
+          /************ Choice 6 - Exit Program *************/
           System.out.println("GoodBye!");
           scan.close();
 
