@@ -1,64 +1,83 @@
+
+/**
+ * bankAccounts
+ */
 import java.lang.reflect.Array;
 import java.util.Scanner;
 
-/**
- * Bank
- */
 public class Bank {
 
-     public static void cuenta(int [] g){
+     // Array account with size of 5
+     public static Account[] bankAccounts = new Account[5];
 
-          for (int i = 0; i < g.length; i++) {
-               
-               Array.set(g, i, i++);
-               
-          }
-     }
      public static void main(String[] args) {
           int choice = 0;
           Scanner scan = new Scanner(System.in);
-          Account[] bank = new Account[5];
-         
-          // bank[0] = new Account("Andrew", 6.5, 120.0);
-          // bank[1] = new Account("Tony", 10.5, 100.0);
-          // bank[2] = new Account("Bruce", 7.5, 800.0);
-          // bank[3] = new Account("Rogers", 3.5, 750.0);
 
-          System.out.println("Welcome to Knightro Banking: ");
+          // Testing
+          // bankAccounts[0] = new Account("Andrew", 6.5, 120.0);
+          // bankAccounts[1] = new Account("Tony", 10.5, 100.0);
+          // bankAccounts[2] = new Account("Bruce", 7.5, 800.0);
+          // bankAccounts[3] = new Account("Rogers", 3.5, 750.0);
+
+          System.out.println("Welcome to Knightro bankAccountsing: ");
           while (choice != 6) {
 
-               for (int i = 0; i < bank.length; i++) {
+               for (int i = 0; i < bankAccounts.length; i++) {
 
                     // System.out.print("Account Name: ");
-                    if (bank[i] == null) {
+                    if (bankAccounts[i] == null) {
                          System.out.println(((i + 1) + ". Empty."));
                     } else {
-                         System.out.println(bank[i].getName() + " Balance: " + bank[i].getBalance());
+                         System.out.println((i + 1) + ". " + bankAccounts[i].getName());
                     }
 
                }
-               System.out.println("6. Exit Program");
+               System.out.println((bankAccounts.length + 1) + ". Exit Program");
 
-                choice = scan.nextInt();
-               
-               for (int i = 0; i < bank.length; i++) {
-                    System.out.println("What would you like to do?");
-                    choice = scan.nextInt();
-                    if ( bank[i] == choice && bank[i] == null) {
-                         
+               System.out.println("What would you like to do?");
+               choice = scan.nextInt();
+
+
+               //Valid or not valid account selected - IF/ELSE
+               if (choice > 0 && choice <= bankAccounts.length) {
+                    
+                    //if bank account is empty - ask to create account
+                    if (bankAccounts[choice - 1] == null) {
+                        
+                         System.out.println("Create New Account.");
+                         System.out.println("What's the name of the account: ");
+                         String name = scan.next();
+                         System.out.println("What's the interest rate? ");
+                         double rate = scan.nextDouble();
+                         bankAccounts[choice - 1] = new Account(name, rate);
+
+
+                    }
+                    //If bank account is not null - Ask user what to do wit the account
+                    else{
+
+
+                         System.out.println("Choose from the following options: " );
+                         System.out.println("1. Deposit Funds \n 2. Withdraw Funds  \n3. Check Balance \n4. Calculate Interest \n5. Close Account");
+                         System.out.println("What would you like to do?");
+                         int option = scan.nextInt();
+
+                         //Option 1 - Deposit Funds
+
+                         if (option == 1) {
+                             System.out.println("How much money would you like to deposit?");
+                              double amount = scan.nextDouble();
+                              //Check if amount is valid or not
+                              if (bankAccounts[choice - 1].deposit(amount)) {
+                                   System.out.printf("You have added $%.2\n", amount);
+                              }
+                         }
                     }
 
-
-               } 
-
-            
-          //     Array.set() will work for this project, if statment when choice is equal null value, change to account name.
-               
-               
-
-
+               }
 
           }
-     }
 
+     }
 }
