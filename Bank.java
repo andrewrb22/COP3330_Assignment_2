@@ -38,13 +38,12 @@ public class Bank {
                System.out.println("What would you like to do?");
                choice = scan.nextInt();
 
-
-               //Valid or not valid account selected - IF/ELSE
+               // Valid or not valid account selected - IF/ELSE
                if (choice > 0 && choice <= bankAccounts.length) {
-                    
-                    //if bank account is empty - ask to create account
+
+                    // if bank account is empty - ask to create account
                     if (bankAccounts[choice - 1] == null) {
-                        
+
                          System.out.println("Create New Account.");
                          System.out.println("What's the name of the account: ");
                          String name = scan.next();
@@ -52,26 +51,40 @@ public class Bank {
                          double rate = scan.nextDouble();
                          bankAccounts[choice - 1] = new Account(name, rate);
 
-
                     }
-                    //If bank account is not null - Ask user what to do wit the account
-                    else{
+                    // If bank account is not null - Ask user what to do wit the account
+                    else {
 
-
-                         System.out.println("Choose from the following options: " );
-                         System.out.println("1. Deposit Funds \n 2. Withdraw Funds  \n3. Check Balance \n4. Calculate Interest \n5. Close Account");
+                         System.out.println("Choose from the following options: ");
+                         System.out.println(
+                                   "1. Deposit Funds \n 2. Withdraw Funds  \n3. Check Balance \n4. Calculate Interest \n5. Close Account");
                          System.out.println("What would you like to do?");
                          int option = scan.nextInt();
 
-                         //Option 1 - Deposit Funds
+                         /************ Option 1 - Deposit Funds *****************/
 
                          if (option == 1) {
-                             System.out.println("How much money would you like to deposit?");
+                              System.out.println("How much money would you like to deposit?");
                               double amount = scan.nextDouble();
-                              //Check if amount is valid or not
+                              // Check if amount is valid or not
                               if (bankAccounts[choice - 1].deposit(amount)) {
                                    System.out.printf("You have added $%.2\n", amount);
-                              }
+                              } else
+                                   System.out.println("Invalid amount!");
+                         }
+
+                         /*********** Option 2 withdraw money from account **********/
+
+                         if (option == 2) {
+                              System.out.println("How much money would you like to withdraw from this account? ");
+                              double amount = scan.nextDouble();
+
+                              // check if amount is valid to make a withdraw
+
+                              if (bankAccounts[choice - 1].withdraw(amount)) {
+                                   System.out.printf("You have withdrawn $.2f\n", amount);
+                              } else
+                                   System.out.println("Invalid amount!");
                          }
                     }
 
